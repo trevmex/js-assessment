@@ -3,7 +3,13 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define([ 'jquery' ], function($) {
   return {
     async : function(value) {
-      return new $.Deferred().resolve(value);
+      var deferred = new $.Deferred();
+
+      setTimeout(function () {
+        deferred.resolve(value);
+      }, 500);
+
+      return deferred;
     },
 
     manipulateRemoteData : function(url) {
